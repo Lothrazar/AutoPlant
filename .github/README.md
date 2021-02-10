@@ -1,16 +1,28 @@
-![build](https://github.com/Lothrazar/ForgeTemplate/workflows/build/badge.svg)
+#Auto Plant
 
-A Forge mod for Template Minecraft Java
+A Minecraft mod built on the Forge API [https://files.minecraftforge.net/](https://files.minecraftforge.net)
 
-- Download a Forge MDK from [https://files.minecraftforge.net/](https://files.minecraftforge.net)
+Project page with releases: https://www.curseforge.com/minecraft/mc-mods/auto-plant
 
-- Clone this repository and add the files into the unzipped MDK folder
+![build](https://github.com/Lothrazar/AutoPlant/workflows/build/badge.svg)
 
-- run ./scripts/setup.sh
+[![](http://cf.way2muchnoise.eu/444013.svg)](https://www.curseforge.com/minecraft/mc-mods/auto-plant) 
+[![](http://cf.way2muchnoise.eu/versions/444013.svg)](https://www.curseforge.com/minecraft/mc-mods/auto-plant)
 
-- Open as a Gradle project in Eclipse (or your favorite Java IDE)
 
-The following badges can be enabled when you have a curseforge project available
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Twitter Badge](https://img.shields.io/badge/contact-twitter-blue.svg)](https://twitter.com/lothrazar)
+[![Discord](https://img.shields.io/discord/749302798797242449.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/uWZ3jf56fV)
+[![links](https://img.shields.io/badge/more-links-ff69b4.svg)](https://allmylinks.com/lothrazar)
+[![Support](https://img.shields.io/badge/Patreon-Support-orange.svg?logo=Patreon)](https://www.patreon.com/Lothrazar)
 
-[![](http://cf.way2muchnoise.eu/CURSEID.svg)](https://www.curseforge.com/minecraft/mc-mods/CURSELINK) 
-[![](http://cf.way2muchnoise.eu/versions/CURSEID.svg)](https://www.curseforge.com/minecraft/mc-mods/CURSELINK)
+
+# Servers
+
+Looking to host a Modded server? Get a discount with my promo code
+
+
+[![Nodecraft Server](https://nodecraft.com/assets/images/partners/loth/mashup.png)](https://nodecraft.com/r/loth)
+
+
+
