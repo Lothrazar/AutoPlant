@@ -23,9 +23,8 @@ package com.lothrazar.autoplant;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  ******************************************************************************/
-import com.lothrazar.cyclic.ModCyclic;
 import java.util.List;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 
 public class UtilString {
 
@@ -54,7 +53,7 @@ public class UtilString {
       if (matchWildcard) {
         String[] blockIdArray = strFromList.split(":");
         if (blockIdArray.length <= 1) {
-          ModCyclic.LOGGER.error("Invalid config value for block : ", strFromList);
+          APMod.LOGGER.error("Invalid config value for block : ", strFromList);
           return false;
         }
         String modIdFromList = blockIdArray[0];

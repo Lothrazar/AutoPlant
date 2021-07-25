@@ -18,7 +18,6 @@ public class APMod {
 
   public APMod() {
     ConfigManager.setup();
-    //    ConfigClientManager.setup();
     FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
     FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient);
   }

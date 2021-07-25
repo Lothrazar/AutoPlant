@@ -2,14 +2,14 @@ package com.lothrazar.autoplant.event;
 
 import com.lothrazar.autoplant.UtilString;
 import com.lothrazar.autoplant.config.ConfigManager;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.item.ItemExpireEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -30,21 +30,21 @@ public class ItemEvents {
     }
     ItemEntity item = event.getEntityItem();
     ItemStack itemstack = item.getItem();
-    World world = item.world;
-    BlockPos pos = item.getPosition();
-    if (!world.isAirBlock(pos)) {
+    Level world = item.level;
+    BlockPos pos = item.blockPosition();
+    if (!world.isEmptyBlock(pos)) {
       return;
     }
-    if (this.isPlantable(itemstack.getItem())) {
+    if (this.isPlantable(itemstack)) {
       //sapling tags yes
-      Block block = Block.getBlockFromItem(itemstack.getItem());
+      Block block = Block.byItem(itemstack.getItem());
       if (block != null && block != Blocks.AIR
-          && block.getDefaultState().isValidPosition(world, pos)
-          && world.setBlockState(pos, block.getDefaultState())) {
+          && block.defaultBlockState().canSurvive(world, pos)
+          && world.setBlockAndUpdate(pos, block.defaultBlockState())) {
         itemstack.shrink(1);
         event.getEntityItem().setItem(itemstack);
         if (event.getEntityItem().getItem().isEmpty()) {
-          event.getEntity().remove();
+          event.getEntity().remove(Entity.RemovalReason.KILLED);
         }
         else { // not really needed
           //increase life
@@ -56,10 +56,10 @@ public class ItemEvents {
     }
   }
 
-  private boolean isPlantable(Item item) {
-    if (ConfigManager.DOSAPLINGS.get() && item.isIn(ItemTags.SAPLINGS)) {
+  private boolean isPlantable(ItemStack itemstack) {
+    if (ConfigManager.DOSAPLINGS.get() && itemstack.is(ItemTags.SAPLINGS)) {
       return true;
     }
-    return UtilString.isInList(ConfigManager.DOTHESEBLOCKS.get(), item.getRegistryName());
+    return UtilString.isInList(ConfigManager.DOTHESEBLOCKS.get(), itemstack.getItem().getRegistryName());
   }
 }
