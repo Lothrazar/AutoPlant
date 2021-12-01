@@ -20,7 +20,7 @@ version="${file.jarVersion}" #mandatory
  
 displayName="autoplant" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>
-updateJSONURL="https://raw.githubusercontent.com/Lothrazar/AutoPlant/trunk/1.16/update.json" #optional
+updateJSONURL="https://raw.githubusercontent.com/Lothrazar/AutoPlant/trunk/1.18/update.json" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI # replace cyclic with your website
 displayURL="https://www.curseforge.com/minecraft/mc-mods/auto-plant"
 
