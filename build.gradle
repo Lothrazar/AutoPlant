@@ -1,8 +1,6 @@
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }  
-        maven { url = 'https://files.minecraftforge.net/maven' }
-        jcenter()
         mavenCentral()
     }
     dependencies {
@@ -13,11 +11,6 @@ apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
-apply plugin: 'checkstyle'
-apply from: 'https://raw.githubusercontent.com/SizableShrimp/Forge-Class-Remapper/main/classremapper.gradle' 
-import net.minecraftforge.gradle.common.tasks.SignJar
-import groovy.json.JsonSlurper
-import groovy.json.JsonOutput
 
 version = "${mc_version}-${mod_version}"
 group = 'com.lothrazar.autoplant' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -25,13 +18,6 @@ archivesBaseName = 'autoplant'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-checkstyle {
-    toolVersion '8.23'
-    config project.resources.text.fromUri("https://raw.githubusercontent.com/Lothrazar/Cyclic/trunk/1.16/checkstyle.xml")
-}
-checkstyleMain {
-    source ='src/main/java'
-}
 
 minecraft {
     // The mappings can be changed at any time, and must be in the following format.
@@ -40,7 +26,7 @@ minecraft {
     // Use non-default mappings at your own risk. they may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
     
- mappings channel: 'official', version: '1.18'
+ mappings channel: 'official', version: '1.18.2'
   
 
     // Default run configurations.
@@ -86,6 +72,10 @@ minecraft {
 }
 
 
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
 dependencies {
     // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
@@ -187,22 +177,12 @@ publishing {
     }
 }
 
-task signJar(type: SignJar, dependsOn: jar) {
-
-    keyStore = project.findProperty('keyStore')
-    alias = project.findProperty('keyStoreAlias')
-    storePass = project.findProperty('keyStorePass')
-    keyPass = project.findProperty('keyStoreKeyPass')
-    inputFile = jar.archivePath
-    outputFile = jar.archivePath
-}
-
 
 task copyJar(type: Copy) {
     from jar
     into "${dist_folder}"
 }
 
-cleanJar {
+task cleanJar {
   delete 'build/libs'
 }
