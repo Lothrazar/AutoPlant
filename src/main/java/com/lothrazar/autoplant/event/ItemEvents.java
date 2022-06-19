@@ -9,6 +9,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.item.ItemExpireEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -59,7 +60,7 @@ public class ItemEvents {
   private boolean isPlantable(ItemStack itemstack) {
     if (ConfigManager.DOSAPLINGS.get() && itemstack.is(ItemTags.SAPLINGS)) {
       return true;
-    }
-    return UtilString.isInList(ConfigManager.DOTHESEBLOCKS.get(), itemstack.getItem().getRegistryName());
+    } 
+    return UtilString.isInList(ConfigManager.DOTHESEBLOCKS.get(), Registry.ITEM.getKey(itemstack.getItem().asItem()));
   }
 }
