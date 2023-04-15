@@ -54,3 +54,9 @@ autoplant by Lothrazar
     versionRange="[1.19,)"
     ordering="NONE"
     side="BOTH"
+[[dependencies.autoplant]]
+    modId="flib"
+    mandatory=true
+    versionRange="[0.0.4,)"
+    ordering="NONE"
+    side="BOTH"
