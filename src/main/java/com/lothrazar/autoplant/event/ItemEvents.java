@@ -24,7 +24,7 @@ public class ItemEvents {
     }
     ItemEntity item = event.getEntity();
     ItemStack itemstack = item.getItem();
-    Level world = item.level;
+    Level world = item.level();
     BlockPos pos = item.blockPosition();
     if (!world.isEmptyBlock(pos)) {
       return;
