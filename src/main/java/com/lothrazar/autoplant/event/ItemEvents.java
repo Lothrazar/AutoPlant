@@ -10,9 +10,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.event.entity.item.ItemExpireEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.event.entity.item.ItemExpireEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 public class ItemEvents {
 
@@ -43,7 +43,7 @@ public class ItemEvents {
         else { // not really needed
           //increase life
           event.setExtraLife(3000);
-          event.setCanceled(true);
+//          event.setCanceled(true); // NEOFORGE event is no longer icancellable
           //            event.getEntityItem().lifespan = 6000;
         }
       }
@@ -54,6 +54,6 @@ public class ItemEvents {
     if (ConfigAutoPlant.DOSAPLINGS.get() && itemstack.is(ItemTags.SAPLINGS)) {
       return true;
     }
-    return StringParseUtil.isInList(ConfigAutoPlant.DOTHESEBLOCKS.get(), ForgeRegistries.ITEMS.getKey(itemstack.getItem().asItem()));
+    return StringParseUtil.isInList(ConfigAutoPlant.DOTHESEBLOCKS.get(), BuiltInRegistries.ITEM.getKey(itemstack.getItem().asItem()));
   }
 }

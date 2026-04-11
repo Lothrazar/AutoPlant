@@ -3,21 +3,16 @@ package com.lothrazar.autoplant.config;
 import java.util.Arrays;
 import java.util.List;
 import com.lothrazar.autoplant.APMod;
-import com.lothrazar.library.config.ConfigTemplate;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
-import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
-public class ConfigAutoPlant extends ConfigTemplate {
+public class ConfigAutoPlant  {
 
-  private static final List<String> DFLT = Arrays.asList(new String[] {
-      "minecraft:grass"
-  });
-  private static ForgeConfigSpec CONFIG;
-  public static BooleanValue DOSAPLINGS;
-  public static ConfigValue<List<String>> DOTHESEBLOCKS;
+  private static final List<String> DFLT = Arrays.asList("minecraft:grass");
+  public static final ModConfigSpec CONFIG;
+  public static ModConfigSpec.BooleanValue DOSAPLINGS;
+  public static ModConfigSpec.ConfigValue<List<String>> DOTHESEBLOCKS;
   static {
-    final ForgeConfigSpec.Builder BUILDER = builder();
+    final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
     BUILDER.comment("General settings").push(APMod.MODID);
     //
     DOSAPLINGS = BUILDER.comment("Planting saplings allowed").define("plantAllSaplings", true);
@@ -25,9 +20,5 @@ public class ConfigAutoPlant extends ConfigTemplate {
     //
     BUILDER.pop();
     CONFIG = BUILDER.build();
-  }
-
-  public ConfigAutoPlant() {
-    CONFIG.setConfig(setup(APMod.MODID));
   }
 }
