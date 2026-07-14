@@ -1,10 +1,11 @@
 {
   "homepage": "https://www.curseforge.com/minecraft/mc-mods/auto-plant",
   "promos": {
-    "1.21.1-latest": "1.0.2"
+    "1.21.1-latest": "1.0.3"
   },
   "1.21.1": {
     "1.0.1": "Ported mod to 1.21.1",
-    "1.0.2": "Fix a bad data pack"
+    "1.0.2": "Fix a bad data pack",
+    "1.0.3": "Fix config extra errors on blank entries"
   }
 }
